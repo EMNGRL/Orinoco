@@ -1,0 +1,118 @@
+body{
+	font-family: 'arial',sans-serif;
+}
+
+header{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+    background-color:#f3e9f1;
+    padding: 30px;
+}
+
+.logo{
+	height: 100px;
+    margin-left: 50px;
+}
+
+nav a{
+	color: black;
+    margin-right: 50px;
+    text-decoration: none;
+}
+
+footer{
+    padding: 30px;
+    margin-top: 5%;
+    background-color:#f3e9f1;
+}
+footer ul{
+    margin-left: 45%;
+    padding: 0;
+}
+
+footer li{
+    display: inline-block;
+    list-style: none;
+    text-align: center;
+    
+}
+
+.reseaux{
+    margin-left: 48%;
+}
+
+.reseaux i{
+    margin: 0 1% 0 1%;
+}
+
+/* HOME PAGE */
+
+h1{
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.products{
+    display: grid;
+    grid-template-columns: repeat(3, 2fr);
+    grid-gap: 2%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.bloc-products{
+    background-color: #f3e9f1;
+    border-radius: 25px;
+    padding: 4%;
+    min-width: 100px;
+    min-height: 300px;
+}
+
+.bloc-products a{
+    text-decoration: none;
+}
+
+.bloc-products img{
+    width: 100%;
+    height: 80%;
+    border-radius: 25px;
+    object-fit: cover;
+}
+
+.text-products {
+    color: black;
+    font-size: 1em;
+    display: flex;
+}
+
+.price{
+    margin-left: 65%;
+}
+
+/* PRODUCT PAGE */
+
+.page-product{
+    margin-top: 7%;
+}
+
+.product{
+    margin-left: 15%;
+    display: flex;
+    text-align:left;
+}
+
+.img-product{
+    width: 30%;
+    padding: 2%;
+    border-radius: 25px;
+    background-color:  #f3e9f1;
+    object-fit: cover;
+}
+
+.details-product{
+    margin-left: 2%;
+    max-width: 500px;
+    max-height: 400px;
+}
