@@ -45,7 +45,6 @@ footer li{
     display: inline-block;
     list-style: none;
     text-align: center;
-    
 }
 
 .reseaux{
@@ -114,11 +113,17 @@ h1{
 }
 
 .details{
-    background: linear-gradient(to right, #d4803c, #8f5bfe);
+    background: #8f5bfe;
     border-style: none;
     padding: 2%;
     border-radius: 10px;
     color: white;
+}
+
+.details:hover{
+    background: #d4803c;
+    color: white;
+    transition: 0.5s;
 }
 
 /* PRODUCT PAGE */
