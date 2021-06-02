@@ -21,6 +21,16 @@ nav a{
     text-decoration: none;
 }
 
+.home:hover{
+    color: #d4803c;
+    transition: 0.2s;
+}
+
+.shopping:hover{
+    color: #8f5bfe;
+    transition: 0.2s;
+}
+
 footer{
     padding: 30px;
     margin-top: 5%;
@@ -137,10 +147,105 @@ h1{
     max-height: 400px;
 }
 
-.add{
-    background: linear-gradient(to right, #d4803c, #8f5bfe);
+.add button{
+    background: #d4803c;
     border-style: none;
     padding: 2%;
     border-radius: 10px;
     color: white;
+}
+
+.add :hover{
+    background: #8f5bfe;
+    transition: 0.5s;
+}
+
+/* SHOPPING PAGE */
+
+.page-shopping{
+    margin-top: 2%;
+}
+
+.shop-product{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 1000px;
+    height: 200px;
+    padding: 2%;
+    background-color:#f3e9f1;
+    margin: auto;
+    border-bottom: black solid 2px;
+}
+
+.img-product-added{
+    width: 20%;
+    border-radius: 25px;
+}
+
+.delete-product{
+    background-color: rgb(226, 38, 38);
+    border-style: none;
+    padding: 12%;
+    border-radius: 25px;
+}
+
+.final-order-price{
+    margin-left: 20%;
+    margin-top: 3%;
+}
+
+.continue-shopping{
+    background: #f3e9f1;
+    border-style: none;
+    padding: 1%;
+    border-radius: 10px;
+    color: black;
+    margin-left: 20%;
+    margin-top: 2%;
+    width: 1070px;
+}
+
+.continue-shopping:hover{
+    background: #8f5bfe;
+    color: white;
+    transition: 0.5s;
+}
+
+.form{
+    margin-left: 20%;
+    margin-top: 2%;
+}
+
+.name-form{
+    margin-bottom: 2%;
+}
+
+.form input{ 
+    color: rgba(128, 128, 128, 0.479);
+    width: 980px;
+    height: 30px;
+    border: #8f5bfe solid 1px;
+    border-radius: 5px;
+}
+
+.adress-form{
+    margin-bottom: 2%;
+}
+
+.pay{
+    background: #f3e9f1;
+    border-style: none;
+    padding: 1%;
+    border-radius: 10px;
+    color: black;
+    margin-left: 20%;
+    margin-top: 2%;
+    width: 1070px;
+}
+
+.pay:hover{
+    background: #8f5bfe;
+    color: white;
+    transition: 0.5s;
 }

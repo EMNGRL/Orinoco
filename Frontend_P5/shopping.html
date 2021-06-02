@@ -18,11 +18,63 @@
 
         <nav>
             <ul>
-                <a href="home.html">Accueil</a>
-                <a href="shopping.html"> <i class="fas fa-shopping-cart fa-2x"></i></a>
+                <a class="home" href="home.html">Accueil</a>
+                <a class="shopping" href="shopping.html"> <i class="fas fa-shopping-cart fa-2x"></i></a>
             </ul>
         </nav>
     </header>
+
+    <main class="page-shopping">
+
+        <h1>Votre panier</h1>
+
+        <div class="shop-product">
+            <img class="img-product-added" src="img/vcam_1.jpg" alt="product-added">
+            <div class="details-product-added">
+                <h2 class="product-name">Nom caméra</h2>
+                <p class="quantity"><b>Quantité :</b></p>
+                <p class="lens"><b>Objectifs :</b></p>
+            </div>
+            <div class="price-product-added">
+                <p class="total-price"><b>Prix :</b></p>
+            </div>
+            <div class="delete-product-added">
+                <button class="delete-product">Supprimer</button>
+            </div>
+        </div>
+
+        <p class="final-order-price"><b>Total de votre panier :</b></p>
+
+        <button class="continue-shopping">Continuer mes achats</button>
+
+        <div class="form">
+            <form action="" method="post">
+                <div class="name-form">
+                    <label for="name">Nom :</label>
+                    <input type="text" id="name" name="user_name" value=" Votre nom" required>
+                </div>
+                <div class="name-form">
+                    <label for="name">Prénom :</label>
+                    <input type="text" id="name" name="user_name" value=" Votre prénom" required>
+                </div>
+                <div class="adress-form">
+                    <label for="name">Adresse</label>
+                    <input type="text" id="adress" name="user_adress" value=" Votre adresse" required>
+                </div>
+                <div class="adress-form">
+                    <label for="name">Code postal</label>
+                    <input type="text" id="code-postal" name="user_postal" value=" Votre code postal" required>
+                </div>
+                <div class="mail-form">
+                    <label for="mail">E-Mail :</label>
+                    <input type="email" id="mail" name="user_mail" value=" Votre mail" required>
+                </div>
+            </form>
+        </div>
+
+        <button class="pay">Commander</button>
+
+    </main>
 
     <footer>
         <ul>
