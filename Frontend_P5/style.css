@@ -46,6 +46,18 @@ footer li{
     margin: 0 1% 0 1%;
 }
 
+.fa-facebook{
+    color: #d4803c;
+}
+
+.fa-instagram{
+    color: #b16e9e;
+}
+
+.fa-pinterest{
+    color: #8f5bfe;
+}
+
 /* HOME PAGE */
 
 h1{
