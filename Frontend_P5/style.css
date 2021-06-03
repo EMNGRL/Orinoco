@@ -12,7 +12,7 @@ header{
 
 .logo{
 	height: 100px;
-    margin-left: 50px;
+    margin-left: 5%;
 }
 
 nav a{
@@ -36,19 +36,17 @@ footer{
     margin-top: 5%;
     background-color:#f3e9f1;
 }
-footer ul{
-    margin-left: 42%;
-    padding: 0;
-}
 
-footer li{
-    display: inline-block;
-    list-style: none;
+.footer-li{
     text-align: center;
 }
 
+footer ul{
+    padding: 0;
+}
+
 .reseaux{
-    margin-left: 45%;
+  margin-left: 45%;
 }
 
 .reseaux i{
@@ -67,7 +65,7 @@ footer li{
     color: #8f5bfe;
 }
 
-/* HOME PAGE */
+/* ----------- HOME PAGE ----------- */
 
 h1{
     text-align: center;
@@ -77,7 +75,7 @@ h1{
 
 .products{
     display: grid;
-    grid-template-columns: repeat(3, 2fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: 2%;
     margin-left: 5%;
     margin-right: 5%;
@@ -126,7 +124,7 @@ h1{
     transition: 0.5s;
 }
 
-/* PRODUCT PAGE */
+/* ----------- PRODUCT PAGE ----------- */
 
 .page-product{
     margin-top: 7%;
@@ -165,7 +163,7 @@ h1{
     transition: 0.5s;
 }
 
-/* SHOPPING PAGE */
+/* ----------- SHOPPING PAGE ----------- */
 
 .page-shopping{
     margin-top: 2%;
@@ -255,7 +253,7 @@ h1{
     transition: 0.5s;
 }
 
-/* ORDER THANKS PAGE */
+/* ----------- ORDER THANKS PAGE ----------- */
 
 .order-thanks-page{
     margin: 8% 0 8% 0;
@@ -289,3 +287,36 @@ h1{
     color: white;
     transition: 0.5s;
 }
+
+/* ----------- VERSION TABLETTE ----------- */
+
+@media all and (max-width: 1280px) and (min-width: 640px) {
+
+    .products{
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    footer{
+        margin-top: 8%;
+    }
+}
+
+/* ----------- VERSION MOBILE ----------- */
+
+@media all and (max-width: 640px) and (min-width: 100px) {
+
+    h1{
+        margin-top: 4%;
+        margin-bottom: 4%;
+    }
+
+    .products{
+        grid-template-columns: none;
+        grid-template-rows: repeat(1,1fr);
+    }
+
+    footer{
+        margin-top: 40%;
+    }
+}
+
