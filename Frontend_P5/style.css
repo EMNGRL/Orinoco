@@ -37,7 +37,7 @@ footer{
     background-color:#f3e9f1;
 }
 footer ul{
-    margin-left: 45%;
+    margin-left: 42%;
     padding: 0;
 }
 
@@ -48,7 +48,7 @@ footer li{
 }
 
 .reseaux{
-    margin-left: 48%;
+    margin-left: 45%;
 }
 
 .reseaux i{
@@ -250,6 +250,41 @@ h1{
 }
 
 .pay:hover{
+    background: #8f5bfe;
+    color: white;
+    transition: 0.5s;
+}
+
+/* ORDER THANKS PAGE */
+
+.order-thanks-page{
+    margin: 8% 0 8% 0;
+}
+
+.order-thanks{
+    text-align: center;
+    font-weight: 200;
+}
+
+.order-number{
+    text-align: center;
+    margin-top: 3%;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.return{
+    background: #f3e9f1;
+    border-style: none;
+    padding: 1%;
+    border-radius: 10px;
+    color: black;
+    width: 600px;
+    margin-left: 33%;
+    margin-top: 3%;
+}
+
+.return:hover{
     background: #8f5bfe;
     color: white;
     transition: 0.5s;
