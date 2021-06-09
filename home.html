@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="Frontend_P5/style.css">
     <script src="https://kit.fontawesome.com/bb13c13b83.js" crossorigin="anonymous"></script>
 
     <title>Orinoco - Vente de caméras vintage</title>
@@ -15,26 +15,27 @@
 <body>
     <header>
 
-        <a class="logo" href="home.html"><img class="logo" src="img/logo.png" alt="logo"></a> <!--LOGO ORINOCO-->
-		
+        <a class="logo" href="home.html"><img class="logo" src="Frontend_P5/img/logo.png" alt="logo"></a> 
+
         <nav>
             <ul>
-                <a class="home" href="home.html">Accueil</a>
                 <a class="shopping" href="shopping.html"> <i class="fas fa-shopping-cart fa-2x"></i></a>
             </ul>
         </nav>
 
     </header>
 
-    <main class="order-thanks-page">
+    <main id="main">
 
-        <h1>Merci pour votre commande !</h1>
-        <h2 class="order-thanks">Votre commande sera expédiée dans les plus brefs délais</h2>
-        <p class="order-number">Numéro de commande :</p>
-        <p class="order-price">Total de la commande :</p>
-
-        <a class="home-return" href="home.html"><button class="return">Retour à l'accueil</button></a>
-
+        <h1>Nos caméras vintage</h1>
+        <template id="templateArticle">
+            <article class="cardProduct">
+                <img id="imgProduct" alt="image produit">
+                <h2 id="nameProduct"></h2>
+                <p id="priceProduct"></p>
+                <button id="detailsProduct">Voir plus</button>
+            </article>
+        </template>
     </main>
 
     <footer>
@@ -48,5 +49,8 @@
         </ul>
 
     </footer>
+
+    <script src="Frontend_P5/JS/home.js"></script>
+
 </body>
 </html>

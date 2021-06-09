@@ -73,44 +73,29 @@ h1{
     margin-bottom: 2%;
 }
 
-.products{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 2%;
-    margin-left: 5%;
-    margin-right: 5%;
-}
-
-.bloc-products{
+.cardProduct{
     background-color: #f3e9f1;
     border-radius: 25px;
     padding: 4%;
-    min-width: 100px;
-    min-height: 300px;
+    width: 400px;
+    height: 300px;
+    margin: 0 10px 30px 30px;
+    display: inline-block;
 }
 
-.bloc-products a{
-    text-decoration: none;
-}
-
-.bloc-products img{
+#imgProduct{
     width: 100%;
     height: 80%;
     border-radius: 25px;
     object-fit: cover;
 }
 
-.text-products {
-    color: black;
-    font-size: 1em;
-    display: flex;
+#nameProduct{
+    font-size: 20px;
+    font-weight: 900;
 }
 
-.price{
-    margin-left: 65%;
-}
-
-.details{
+#detailsProduct{
     background: #8f5bfe;
     border-style: none;
     padding: 2%;
@@ -118,11 +103,6 @@ h1{
     color: white;
 }
 
-.details:hover{
-    background: #d4803c;
-    color: white;
-    transition: 0.5s;
-}
 
 /* ----------- PRODUCT PAGE ----------- */
 
@@ -265,6 +245,13 @@ h1{
 }
 
 .order-number{
+    text-align: center;
+    margin-top: 3%;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.order-price{
     text-align: center;
     margin-top: 3%;
     font-size: 20px;
