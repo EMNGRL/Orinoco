@@ -15,7 +15,7 @@
 <body>
     <header>
 
-        <a class="logo" href="home.html"><img class="logo" src="img/logo.png" alt="logo"></a> <!--LOGO ORINOCO-->
+        <a class="logo" href="/home.html"><img class="logo" src="img/logo.png" alt="logo"></a> 
 		
         <nav>
             <ul>
@@ -26,19 +26,22 @@
 
     </header>
 
-    <main class="page-product">
+    <main class="pageProduct" id="pageProduct">
 
-        <div class="product">
-            <img class="img-product" src="img/vcam_1.jpg" alt="caméra vintage">
+        <h1>Nos caméras vintage</h1>
 
-            <div class="details-product">
-                <h1 class="product-name">Nom caméra</h1>
-                <p><b>Description :</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer facilisis eros at nisl dignissim, ac scelerisque elit imperdiet. Sed nec velit sem.</p>
-                <p class="lens"><b>Lentilles :</b></p>
-                <p class="total-price"><b>Prix total :</b></p>
-                <a class="add" href="shopping.html"><button>Ajouter au panier</button></a>
-            </div>
-        </div>
+       
+            <article class="product">
+                <img id="imgPageProduct" src="" alt="caméra vintage">
+                <div class="infoProduct" id="infoProduct">
+                    <h2 id="name">NAME</h2>
+                    <p id="description"><b>DESCRIPTION</b></p>
+                    <p id="lenses"><b>LENTILLES</b></p>
+                    <p id="price"><b>PRIX€</b></p>
+                    <a id="add" href=""><button>Ajouter au panier</button></a>
+                </div>
+            </article>
+       
 
     </main>
 
@@ -53,5 +56,8 @@
         </ul>
 
     </footer>
+
+    <script src="Frontend_P5/JS/product.js"></script>
+
 </body>
 </html>
