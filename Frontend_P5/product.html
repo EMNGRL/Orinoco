@@ -30,18 +30,27 @@
 
         <h1>Nos caméras vintage</h1>
 
-       
+        <template id="templateArticle">
             <article class="product">
                 <img id="imgPageProduct" src="" alt="caméra vintage">
                 <div class="infoProduct" id="infoProduct">
-                    <h2 id="name">NAME</h2>
-                    <p id="description"><b>DESCRIPTION</b></p>
-                    <p id="lenses"><b>LENTILLES</b></p>
-                    <p id="price"><b>PRIX€</b></p>
+                    <h2 id="name"></h2>
+                    <p id="description"></p>
+                    <p id="lenses">
+                        <div class="lensesList">
+                            <select class="form-control">
+                                <option>Choix de la lentille</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                            </select>
+                        </div>
+                    </p>
+                    <p id="price"></p>
                     <a id="add" href=""><button>Ajouter au panier</button></a>
                 </div>
             </article>
-       
+        </template>
 
     </main>
 
@@ -57,7 +66,7 @@
 
     </footer>
 
-    <script src="Frontend_P5/JS/product.js"></script>
+    <script src="JS/product.js"></script>
 
 </body>
 </html>

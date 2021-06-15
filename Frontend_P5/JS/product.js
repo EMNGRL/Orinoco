@@ -1,3 +1,5 @@
+//fonctions de base
+
 main()
 
 async function main(){
@@ -6,6 +8,8 @@ async function main(){
         displayArticle(article)
     }     
 }
+
+// fetch de l'api > cameras
 
 function getArticles(){
     return fetch("http://localhost:3000/api/cameras")
@@ -20,16 +24,28 @@ function getArticles(){
         })
 }
 
+// affichage d'un article en fonction de l'id choisi
+
+
 function displayArticle(){
    const templateElt = document.getElementById("templateArticle")
    const cloneElt = document.importNode(templateElt.content, true)
+   
+   let searchParams = new URLSearchParams(window.location.search);
 
-   cloneElt.getElementById("imgProduct").src = article.imageUrl
+   if (searchParams.has('id')){
+        let camId = searchParams.get('id');
+   } else {
+       window.location.pathname = 'home.html';
+   }
+
+   cloneElt.getElementById("imgPageProduct").src = article.imageUrl
    cloneElt.getElementById("name").textContent = article.name
-   cloneElt.getElementById("lenses").textContent = article.lenses
-   cloneElt.getElementById("description").textContent = article.description
+   cloneElt.getElementById("lenses").textContent = "Lentilles" + article.lenses 
+   cloneElt.getElementById("description").textContent = "Description" + article.description
    cloneElt.getElementById("price").textContent = article.price/100 + "€"
    cloneElt.getElementById("add").href = ``
 
-   document.getElementById("main").appendChild(cloneElt)
+   document.getElementById("pageProduct").appendChild(cloneElt)
 }
+
