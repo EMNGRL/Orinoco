@@ -1,51 +1,64 @@
-//fonctions de base
+const params = new URLSearchParams(window.location.search);
+let idCamera = params.get("id");
 
-main()
+function getCamera(cameras, idCamera) {
 
-async function main(){
-    const articles = await getArticles()
-    for (article of articles){
-        displayArticle(article)
-    }     
+    let myCamera = cameras.find(cameras => cameras["_id"] == idCamera);
+   } 
+
+function createCamera(myCamera){
+    let product = document.getElementById("product")
+        
+        let name = document.createElement("p")
+        name.id = "namePageProduct";
+        product.appendChild(name)
+        name.textContent = myCamera.name
+
+        let imgProduct = document.createElement("img")
+        imgProduct.id = "imgPageProduct";
+        product.appendChild(imgProduct)
+        imgProduct.src = myCamera.imageUrl
+
+        let description = document.createElement("p")
+        description.id = "descriptionPageProduct";
+        product.appendChild(description)
+        description.textContent = myCamera.description
+
+        let lenses = document.createElement("p")
+        lenses.id = "lensesProduct";
+        product.appendChild(lenses)
+        lenses.textContent = myCamera.lenses
+
+        let price = document.createElement("p")
+        price.id = "pricePageProduct";
+        product.appendChild(price)
+        price.textContent = myCamera.price/100 + "€"
+
+        let btn = document.createElement("BUTTON");
+        btn.id = "addProduct";
+        btn.innerHTML = "Ajouter au panier";
+        product.appendChild(btn);
 }
 
-// fetch de l'api > cameras
+let cameras;
 
-function getArticles(){
-    return fetch("http://localhost:3000/api/cameras")
-        .then(function(httpBodyResponse){
-           return httpBodyResponse.json()
-        })
-        .then(function(articles){
-           return articles
-        })
-        .catch(function(error){
-            alert(error)
-        })
-}
+// RECUPERATION DE L'URL AVEC ID
+const getOneCamera = async function () {
+    try {
+    let response = await fetch(`http://localhost:3000/api/cameras/${idCamera}` , {
+        mode: 'cors'
+    })
+        if (response.ok) {
+            let cameras = await response.json();
+                   
+                  createCamera(cameras);         
+        } else {
+        console.error("Error", response.status)
+    }
+    } catch (e) {
+        console.log(e);
+    }
+};
 
-// affichage d'un article en fonction de l'id choisi
-
-
-function displayArticle(){
-   const templateElt = document.getElementById("templateArticle")
-   const cloneElt = document.importNode(templateElt.content, true)
-   
-   let searchParams = new URLSearchParams(window.location.search);
-
-   if (searchParams.has('id')){
-        let camId = searchParams.get('id');
-   } else {
-       window.location.pathname = 'home.html';
-   }
-
-   cloneElt.getElementById("imgPageProduct").src = article.imageUrl
-   cloneElt.getElementById("name").textContent = article.name
-   cloneElt.getElementById("lenses").textContent = "Lentilles" + article.lenses 
-   cloneElt.getElementById("description").textContent = "Description" + article.description
-   cloneElt.getElementById("price").textContent = article.price/100 + "€"
-   cloneElt.getElementById("add").href = ``
-
-   document.getElementById("pageProduct").appendChild(cloneElt)
-}
-
+// APPEL DE LA FONCTION API
+getOneCamera()

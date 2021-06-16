@@ -33,7 +33,7 @@ nav a{
 
 footer{
     padding: 30px;
-    margin-top: 5%;
+    margin-top: 3%;
     background-color:#f3e9f1;
 }
 
@@ -66,12 +66,9 @@ footer ul{
 }
 
 /* ----------- HOME PAGE ----------- */
-#main{
-    margin-left: 10%;
-}
 
 h1{
-    margin-left: 33%;
+    text-align: center;
     margin-top: 2%;
     margin-bottom: 2%;
 }
@@ -82,7 +79,7 @@ h1{
     padding: 1%;
     width: 400px;
     height: 450px;
-    margin-right: 2%;
+    margin-left: 7%;
     margin-bottom: 2%;
     display: inline-block;
 }
@@ -121,37 +118,54 @@ h1{
 
 /* ----------- PRODUCT PAGE ----------- */
 
-.product{
-    margin-left: 15%;
-    display: flex;
-    text-align:left;
-}
-
 #imgPageProduct{
     width: 30%;
     padding: 2%;
     border-radius: 25px;
+    margin: 0 33% 0 33%;
     background-color:  #f3e9f1;
     object-fit: cover;
 }
 
-.infoProduct{
-    margin-left: 2%;
-    max-width: 500px;
-    max-height: 400px;
+#namePageProduct{
+    text-align: center;
+    font-size: 35px;
+    font-weight: 800;  
+    background:  #f3e9f1;
+    padding: 0.5%;
 }
 
-#add button{
-    background: #d4803c;
+#descriptionPageProduct{
+    text-align: center;
+    width: 34%;
+    margin: 0 33% 0 33%;
+    margin-top: 2%;
+}
+
+#lensesProduct{
+    text-align: center;
+    font-weight: 600;
+}
+
+#pricePageProduct{
+    text-align: center;
+    font-weight: 600; 
+    margin-top: 1%;
+    font-size: 20px;
+}
+
+#addProduct{
+    background:#8f5bfe;
     border-style: none;
-    padding: 2%;
+    padding: 1%;
     border-radius: 10px;
     color: white;
-    width: 300px;
+    width: 20%;
+    margin: 0 40% 0 40%;
 }
 
-#add :hover{
-    background: #8f5bfe;
+#addProduct:hover{
+    background: #d4803c;
     transition: 0.5s;
 }
 
@@ -291,15 +305,6 @@ h1{
 
 @media all and (max-width: 1280px) and (min-width: 640px) {
 
-    #main{
-        margin-left: 15%;
-    }
-
-    h1{
-        margin-left: 26%;
-        margin-top: 2%;
-        margin-bottom: 2%;
-    }
 
     .cardProduct{
         background-color: #f3e9f1;
