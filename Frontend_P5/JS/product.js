@@ -8,6 +8,7 @@ function getCamera(cameras, idCamera) {
 
 function createCamera(myCamera){
     let product = document.getElementById("product")
+    
         
         let name = document.createElement("p")
         name.id = "namePageProduct";
@@ -23,12 +24,7 @@ function createCamera(myCamera){
         description.id = "descriptionPageProduct";
         product.appendChild(description)
         description.textContent = myCamera.description
-
-        let lenses = document.createElement("p")
-        lenses.id = "lensesProduct";
-        product.appendChild(lenses)
-        lenses.textContent = myCamera.lenses
-
+       
         let price = document.createElement("p")
         price.id = "pricePageProduct";
         product.appendChild(price)
@@ -39,8 +35,8 @@ function createCamera(myCamera){
         btn.innerHTML = "Ajouter au panier";
         product.appendChild(btn);
 }
-
 let cameras;
+
 
 // RECUPERATION DE L'URL AVEC ID
 const getOneCamera = async function () {

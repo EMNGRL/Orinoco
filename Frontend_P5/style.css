@@ -142,8 +142,9 @@ h1{
     margin-top: 2%;
 }
 
-#lensesProduct{
-    text-align: center;
+#lensesList{
+    margin: 1% 40% 0 40%;
+    width: 20%;
     font-weight: 600;
 }
 
