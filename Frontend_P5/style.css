@@ -17,8 +17,17 @@ header{
 
 nav a{
 	color: black;
-    margin-right: 50px;
     text-decoration: none;
+}
+
+nav ul{
+    padding: 0;
+    position: absolute;
+    right: 6%;
+}
+
+nav ul a i{
+    margin-right: 8px;
 }
 
 .home:hover{
@@ -142,10 +151,11 @@ h1{
     margin-top: 2%;
 }
 
-#lensesList{
-    margin: 1% 40% 0 40%;
-    width: 20%;
-    font-weight: 600;
+#selectLenses{
+    padding: 0.8%;
+    border-radius: 10px;
+    margin: 0 45% 1.5% 45%;
+    border: solid 0.1px;
 }
 
 #pricePageProduct{
@@ -155,7 +165,7 @@ h1{
     font-size: 20px;
 }
 
-#addProduct{
+.addProduct{
     background:#8f5bfe;
     border-style: none;
     padding: 1%;
@@ -165,18 +175,15 @@ h1{
     margin: 0 40% 0 40%;
 }
 
-#addProduct:hover{
+.addProduct:hover{
     background: #d4803c;
     transition: 0.5s;
 }
 
 /* ----------- SHOPPING PAGE ----------- */
 
-.page-shopping{
-    margin-top: 2%;
-}
 
-.shop-product{
+#shopProduct{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -188,24 +195,24 @@ h1{
     border-bottom: black solid 2px;
 }
 
-.img-product-added{
+#imgProductAdded{
     width: 20%;
     border-radius: 25px;
 }
 
-.delete-product{
+#deleteProduct{
     background-color: rgb(226, 38, 38);
     border-style: none;
     padding: 12%;
     border-radius: 25px;
 }
 
-.final-order-price{
+#finalOrderPrice{
     margin-left: 20%;
     margin-top: 3%;
 }
 
-.continue-shopping{
+#continueShopping{
     background: #f3e9f1;
     border-style: none;
     padding: 1%;
@@ -216,7 +223,7 @@ h1{
     width: 1070px;
 }
 
-.continue-shopping:hover{
+#continueShopping:hover{
     background: #8f5bfe;
     color: white;
     transition: 0.5s;

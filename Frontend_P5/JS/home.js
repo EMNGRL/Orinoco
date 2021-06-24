@@ -1,4 +1,4 @@
-//fonctions de base
+//FONCTIONS DE BASE
 
 main()
 
@@ -10,7 +10,7 @@ async function main(){
         
 }
 
-// fetch de l'api > cameras
+// FECTH DE L'API CAMERAS
 
 function getArticles(){
     return fetch("http://localhost:3000/api/cameras")
@@ -25,7 +25,7 @@ function getArticles(){
         })
 }
 
-//clone + insert du contenu pour chaque produit
+// CLON & INSERT DE CHAQUE DONNES DU PRODUIT
 
 function displayArticle(){
    const templateElt = document.getElementById("templateArticle")

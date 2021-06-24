@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)https://en.js.cx/task/form-autosave/solution/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body><textarea style="width:200px; height: 60px;" id="area" placeholder="Write here"></textarea>
+<br>
+<button onclick="localStorage.removeItem(&#39;area&#39;);area.value=&#39;&#39;">Clear</button>
+<script>
+    area.value = localStorage.getItem('area');
+    area.oninput = () => {
+      localStorage.setItem('area', area.value)
+    };
+</script>
+</body></html>
