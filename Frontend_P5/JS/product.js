@@ -1,3 +1,4 @@
+// RECUPERATION DE L'URL AVEC ID
 const params = new URLSearchParams(window.location.search);
 let idCamera = params.get("id");
 
@@ -6,10 +7,29 @@ function getCamera(cameras, idCamera) {
     let myCamera = cameras.find(cameras => cameras["_id"] == idCamera);
 } 
 
-// CREATION & AFFICHAGE DES DONNEES DU PRODUIT
+const getOneCamera = async function () {
+    try {
+    let response = await fetch(`http://localhost:3000/api/cameras/${idCamera}` , {
+        mode: 'cors'
+    })
+        if (response.ok) {
+            let cameras = await response.json();
+                   
+                  createCamera(cameras);         
+        } else {
+        console.error("Error", response.status)
+    }
+    } catch (e) {
+        console.log(e);
+    }
+};
 
+// APPEL DE LA FONCTION API
+getOneCamera()
+
+// CREATION & AFFICHAGE DES DONNEES DU PRODUIT
 function createCamera(myCamera){
-    let product = document.getElementById("infoProduct")
+let product = document.getElementById("infoProduct")
     
         // NOM DE LA CAMERA
         let name = document.createElement("p")
@@ -40,6 +60,11 @@ function createCamera(myCamera){
             lenses.value = opt;
             select.appendChild(lenses);
         }
+        let selected = document.getElementById("selectLenses");
+        selected.addEventListener('change', function choiceLenses(){
+            lens = this.value;
+            console.log(lens);
+        })
 
         // PRIX DE LA CAMERA
         let price = document.createElement("p")
@@ -47,16 +72,11 @@ function createCamera(myCamera){
         product.appendChild(price)
         price.textContent = myCamera.price/100 + "€"
 
-
-
-
-
 // AJOUT AU PANIER
-
 let carts = document.querySelectorAll('.addProduct');
 let prod = myCamera;
 
-
+// AJOUT AU PANIER AVEC LE NOMBRE DE PRODUIT
 for (let i=0; i < carts.length; i++){
     carts[i].addEventListener('click', () => {
         cartNumbers(prod);
@@ -65,18 +85,14 @@ for (let i=0; i < carts.length; i++){
 
 function onLoadCartNumbers(){
     let productNumbers = localStorage.getItem('cartNumbers');
-
     if(productNumbers){
         document.querySelector('.shopping span').textContent = productNumbers;
     }
 }
 
 function cartNumbers(prod){
-
     let productNumbers = localStorage.getItem('cartNumbers');
-
     productNumbers = parseInt(productNumbers);
-    
     if(productNumbers) {
         localStorage.setItem('cartNumbers', productNumbers + 1)
         document.querySelector('.shopping span').textContent = productNumbers + 1;
@@ -84,60 +100,32 @@ function cartNumbers(prod){
         localStorage.setItem('cartNumbers', 1)
         document.querySelector('.shopping span').textContent = 1;
     }
-
     setItems(prod);
 }
 
-function setItems(){
+// STOCKAGE DANS LE LOCAL STORAGE DES DONNEES DU PRODUIT
+function setItems(){ 
     let cartItems = localStorage.getItem('productsInCart');
-    cartItems = JSON.parse(cartItems);
+    cart = JSON.parse(cartItems);
+    if(cartItems === null) {
+     
+         cart = [];
+         
+         console.log(cart);
+     }    
+      
+     cart.push({
+        imageUrl: prod.imageUrl,
+       _id: prod._id,
+       name: prod.name,
+       price: prod.price/100,
+       lenses: selected.value,   
+     });
+     localStorage.setItem("productsInCart", JSON.stringify(cart));
+ }
 
-    if(cartItems != null) {
-        
-        if(cartItems[prod.name] == undefined){
-            cartItems = {
-                ...cartItems,
-                [prod.name]: prod
-            }
-        }
-        cartItems[prod.name].inCart += 1;
-    } else{
-        prod.inCart = 1;
-        cartItems = {
-            [prod.name]:prod
-        }
-    }
-
-    localStorage.setItem("productsInCart", JSON.stringify(cartItems));
-}
-
+ 
 onLoadCartNumbers();
 }
+
 let cameras;
-
-
-
-
-
-// RECUPERATION DE L'URL AVEC ID
-
-const getOneCamera = async function () {
-    try {
-    let response = await fetch(`http://localhost:3000/api/cameras/${idCamera}` , {
-        mode: 'cors'
-    })
-        if (response.ok) {
-            let cameras = await response.json();
-                   
-                  createCamera(cameras);         
-        } else {
-        console.error("Error", response.status)
-    }
-    } catch (e) {
-        console.log(e);
-    }
-};
-
-// APPEL DE LA FONCTION API
-
-getOneCamera()

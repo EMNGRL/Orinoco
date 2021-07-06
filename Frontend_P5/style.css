@@ -184,32 +184,70 @@ h1{
 
 
 #shopProduct{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 1000px;
-    height: 200px;
+    max-width: 1000px;
     padding: 2%;
     background-color:#f3e9f1;
     margin: auto;
-    border-bottom: black solid 2px;
+    border: black solid 2px;
 }
 
-#imgProductAdded{
+#divProductAdded{
+    display: flex;
+    align-items: center;
+    margin-bottom: 2%;
+}
+
+#pImg{
+    margin-right: 2%;
     width: 20%;
     border-radius: 25px;
 }
 
-#deleteProduct{
-    background-color: rgb(226, 38, 38);
-    border-style: none;
-    padding: 12%;
-    border-radius: 25px;
+#pName{
+    margin-right: 2%;
+    font-size: 19px;
+    font-weight: 700; 
 }
 
-#finalOrderPrice{
-    margin-left: 20%;
+#pLenses{
+    margin-right: 2%;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+#pPrice{
+    margin-right: 2%;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+#hQty{
+    font-size: 15px;
+    margin-right: 1%;
+}
+
+#totalPriceProduct{
+    font-size: 15px;
+    margin-left: 2%;
+}
+
+#divProductAdded button{
+    background-color: rgb(226, 38, 38);
+    border-style: none;
+    padding: 1%;
+    border-radius: 25px;
+    width: 100px;
+    margin-left: 2%;
+}
+
+#divFinalOrderPrice{
     margin-top: 3%;
+}
+
+#totalOrderPrice{
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
 }
 
 #continueShopping{
@@ -218,9 +256,8 @@ h1{
     padding: 1%;
     border-radius: 10px;
     color: black;
-    margin-left: 20%;
-    margin-top: 2%;
-    width: 1070px;
+    margin: 2% 0 0 20%;
+    width: 1060px;
 }
 
 #continueShopping:hover{
@@ -229,42 +266,39 @@ h1{
     transition: 0.5s;
 }
 
-.form{
+#form{
     margin-left: 20%;
     margin-top: 2%;
+    width: 1000px; 
 }
 
-.name-form{
-    margin-bottom: 2%;
-}
-
-.form input{ 
-    color: rgba(128, 128, 128, 0.479);
-    width: 980px;
+#form input{ 
+    color: black;
+    width: 1060px;
     height: 30px;
     border: #8f5bfe solid 1px;
     border-radius: 5px;
+    margin-bottom: 1.5%;
+    margin-top: 0.5%;
 }
 
-.adress-form{
-    margin-bottom: 2%;
-}
-
-.pay{
+#pay-accept input{
     background: #f3e9f1;
     border-style: none;
-    padding: 1%;
+    padding: 2%;
     border-radius: 10px;
     color: black;
-    margin-left: 20%;
-    margin-top: 2%;
-    width: 1070px;
+    width: 1060px;
 }
 
-.pay:hover{
+#pay-accept input:hover{
     background: #8f5bfe;
     color: white;
     transition: 0.5s;
+}
+
+#pay-accept input value{
+
 }
 
 /* ----------- ORDER THANKS PAGE ----------- */

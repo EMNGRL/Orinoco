@@ -26,62 +26,62 @@
         </nav>
     </header>
 
-    <main class="pageShopping">
+    <main id="pageShopping">
 
         <h1>Votre panier</h1>
 
-        <div id="shopProduct">
+        <div id="shopProduct"> 
 
-            <img id="imgProductAdded" src="img/vcam_1.jpg" alt="product added">
+            <div id="productAdded">
 
-            <div id="detailsProductAdded">
-                <h2 id="productName">Nom caméra</h2>
-                <p id="quantity"><b>Quantité :</b></p>
-                <p id="lens"><b>Objectifs :</b></p>
-            </div>
+                <div id="quantity">
+                </div> 
 
-            <div id="priceProductAdded">
-                <p id="price"><b>Prix :</b></p>
-            </div>
-
-            <div id="deleteProductAdded">
-                <button id="deleteProduct">Supprimer</button>
             </div>
 
         </div>
 
-        <p id="finalOrderPrice"><b>TOTAL DE VOTRE PANIER :</b></p>
+        <div id="divFinalOrderPrice">
+            
+        </div>
 
         <div id="continueBtn">
             <a href="/home.html"><button id="continueShopping" >Continuer mes achats</button></a>
          </div>
 
-        <div class="form">
-            <form action="" method="post">
-                <div class="name-form">
-                    <label for="name">Nom :</label>
-                    <input type="text" id="name" name="user_name" value=" Votre nom">
+
+
+         <div id="form">
+             <h2>Formulaire de commande</h2>
+            <form id="orderForm">
+                <div class="last-name-form">
+                    <label for="last-name">Nom :</label>
+                    <input type="text" id="lastName" name="user_last_name" placeholder=" Votre nom" >
                 </div>
                 <div class="name-form">
                     <label for="name">Prénom :</label>
-                    <input type="text" id="name" name="user_name" value=" Votre prénom">
+                    <input type="text" id="name" name="user_name" placeholder=" Votre prénom" >
                 </div>
                 <div class="adress-form">
-                    <label for="name">Adresse</label>
-                    <input type="text" id="adress" name="user_adress" value=" Votre adresse">
+                    <label for="name">Adresse :</label>
+                    <input type="text" id="adress" name="user_adress" placeholder=" Votre adresse">
                 </div>
                 <div class="adress-form">
-                    <label for="name">Code postal</label>
-                    <input type="text" id="code-postal" name="user_postal" value=" Votre code postal">
+                    <label for="name">Code postal :</label>
+                    <input type="text" id="codePostal" name="user_postal" placeholder=" Votre code postal">
                 </div>
                 <div class="mail-form">
                     <label for="mail">E-Mail :</label>
-                    <input type="email" id="mail" name="user_mail" value=" Votre mail">
+                    <input type="email" id="email" name="user_mail" placeholder=" Votre mail">
+                </div>
+
+                <div id="pay-accept">
+                    <input type="submit" value="Commander">
                 </div>
             </form>
-        </div>
 
-        <a class="pay-accept" href="orderthanks.html"><button class="pay">Commander</button></a>
+            <p style="color: red;" id="erreur"></p>
+        </div>
 
     </main>
 
