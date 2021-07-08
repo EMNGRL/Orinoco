@@ -54,18 +54,20 @@ for (let i=0; i < cart.length; i++){
     div.appendChild(qty);
     div.appendChild(select);
 
-    // CREATION DE L'AFFICHAGE DU PRIX TOTAL DES PRODUITS
+    // CREATION DE L'AFFICHAGE DU PRIX TOTAL D'UN PRODUIT
     let totalPrice = document.createElement("p");
     totalPrice.id = "totalPriceProduct";
     div.appendChild(totalPrice);
 
-    for (let j = 1; j < 11; j++){
+    // CREATION BOUCLE POUR CHOIX DU NOMBRE DE QUANTITE DE 1 à 10
+    for (let j = 0; j < 11; j++){
         let lenses = document.createElement("option");
         lenses.setAttribute("value", j);
         select.appendChild(lenses);
         lenses.textContent = j;
     }
 
+    // CALCUL DU PRIX TOTAL D'UN PRODUIT
     let selected = document.getElementById(cart[i].name);
     selected.addEventListener('change', function quantity(){
        numberQty = this.value;
@@ -86,7 +88,6 @@ for (let i=0; i < cart.length; i++){
             for (let i=0; i < total.length; i++) {
                 tot = tot + total[i];
                 parsed = parseInt(tot);
-                
                 console.log(parsed);
             }
        }
@@ -117,27 +118,29 @@ for (let i=0; i < cart.length; i++){
 let totalOrderPrice = document.createElement("p");
 totalOrderPrice.id = "totalOrderPrice";
 divFinalOrderPrice.appendChild(totalOrderPrice);
-totalOrderPrice.textContent = "PRIX TOTAL DE LA COMMANDE :" + " " + "€";
+totalOrderPrice.textContent = "PRIX TOTAL DE LA COMMANDE : " +  "€";
+
+
 
 //VALIDATION FORMULAIRE COMMANDE
-document.getElementById("orderForm").addEventListener("submit", function(e){
-    let error;
-    let inputs = document.getElementById("orderForm").getElementsByTagName("input");
+// document.getElementById("orderForm").addEventListener("submit", function(e){
+//     let error;
+//     let inputs = document.getElementById("orderForm").getElementsByTagName("input");
 
-    for (let i = 0; i < inputs.length; i++){
-        if (!inputs[i].value){
-            erreur = "Veuillez renseigner tous les champs";
-        }
-    }
+//     for (let i = 0; i < inputs.length; i++){
+//         if (!inputs[i].value){
+//             erreur = "Veuillez renseigner tous les champs";
+//         }
+//     }
 
-     if(erreur){
-        e.preventDefault();
-        document.getElementById("erreur").innerHTML = erreur;
-        return false;    
-    }else{
-        alert('formulaire envoyé');
-    }
+//      if(erreur){
+//         e.preventDefault();
+//         document.getElementById("erreur").innerHTML = erreur;
+//         return false;    
+//     }else{
+//         alert('formulaire envoyé');
+//     }
 
-})
+// })
 
 let test = cart[0].imageUrl;
