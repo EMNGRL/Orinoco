@@ -233,11 +233,11 @@ h1{
 
 #divProductAdded button{
     background-color: rgb(226, 38, 38);
+    color: white;
     border-style: none;
-    padding: 1%;
-    border-radius: 25px;
-    width: 100px;
-    margin-left: 2%;
+    padding: 0.6%;
+    border-radius: 30px;
+    width: 30px;
 }
 
 #divFinalOrderPrice{
@@ -272,17 +272,33 @@ h1{
     width: 1000px; 
 }
 
+#form h2{
+    text-align: center;
+}
+
+.text-success{
+    color: green;
+    margin-bottom: 1%;
+}
+
+.text-danger{
+    color: red;
+}
+
+.form-group{
+    margin-bottom: 1.5%;
+    margin-top: 0.5%;
+}
+
 #form input{ 
     color: black;
     width: 1060px;
     height: 30px;
     border: #8f5bfe solid 1px;
     border-radius: 5px;
-    margin-bottom: 1.5%;
-    margin-top: 0.5%;
 }
 
-#pay-accept input{
+#payAccept{
     background: #f3e9f1;
     border-style: none;
     padding: 2%;
@@ -291,35 +307,51 @@ h1{
     width: 1060px;
 }
 
-#pay-accept input:hover{
+#payAccept:hover{
     background: #8f5bfe;
     color: white;
     transition: 0.5s;
 }
 
-#pay-accept input value{
-
-}
-
 /* ----------- ORDER THANKS PAGE ----------- */
 
+#orderPrice{
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+    background-color: #f3e9f1;
+    padding: 1%;
+}
+
+#recapOrder h2{
+    text-align: center;
+}
+
+#productOrder{
+    background-color: #f3e9f1;
+    border: black solid 2px;
+    padding: 2%;
+    width: 30%;
+    margin: auto;
+}
+
+#divProductOrder{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .order-thanks-page{
-    margin: 8% 0 8% 0;
+    margin: 3% 0 3% 0;
 }
 
 .order-thanks{
     text-align: center;
     font-weight: 200;
-}
-
-.order-number{
-    text-align: center;
-    margin-top: 3%;
     font-size: 20px;
-    font-weight: 700;
 }
 
-.order-price{
+#orderNumber{
     text-align: center;
     margin-top: 3%;
     font-size: 20px;
@@ -334,7 +366,6 @@ h1{
     color: black;
     width: 600px;
     margin-left: 33%;
-    margin-top: 3%;
 }
 
 .return:hover{

@@ -46,7 +46,7 @@ for (let i=0; i < cart.length; i++){
 
     // CREATION DE L'AFFICHAGE DU CHOIX DES QTE DU PRODUIT
     let select = document.createElement("select");
-    select.id = cart[i].name;
+    select.id = cart[i]._id;
     document.getElementById("quantity");
     let qty = document.createElement("h3");
     qty.id = "hQty";
@@ -54,12 +54,11 @@ for (let i=0; i < cart.length; i++){
     div.appendChild(qty);
     div.appendChild(select);
 
-    // CREATION DE L'AFFICHAGE DU PRIX TOTAL D'UN PRODUIT
+    // CREATION DE L'AFFICHAGE DU PRIX TOTAL DES PRODUITS
     let totalPrice = document.createElement("p");
     totalPrice.id = "totalPriceProduct";
     div.appendChild(totalPrice);
 
-    // CREATION BOUCLE POUR CHOIX DU NOMBRE DE QUANTITE DE 1 à 10
     for (let j = 0; j < 11; j++){
         let lenses = document.createElement("option");
         lenses.setAttribute("value", j);
@@ -67,39 +66,30 @@ for (let i=0; i < cart.length; i++){
         lenses.textContent = j;
     }
 
-    // CALCUL DU PRIX TOTAL D'UN PRODUIT
-    let selected = document.getElementById(cart[i].name);
+    let selected = document.getElementById(cart[i]._id);
     selected.addEventListener('change', function quantity(){
        numberQty = this.value;
        let finalPrice = localStorage.getItem('finalPrice');
        total = JSON.parse(finalPrice);
 
-       function addPrice (parsed){
+    
             let price = numberQty * cart[i].price;
             if (finalPrice === null){
                 total=[];
             }
             total.push(price);
             console.log(price);
-        
+
             totalPrice.textContent = "Total du produit :" + " " + price + "€";
 
-            let tot=0;
-            for (let i=0; i < total.length; i++) {
-                tot = tot + total[i];
-                parsed = parseInt(tot);
-                console.log(parsed);
-            }return parsed;
-       }
-       
-        localStorage.setItem("finalPrice", JSON.stringify(total));
+        localStorage.setItem("finalPrice", JSON.stringify(total));   
     })
-   
+
     // CREATION BOUTON SUPPRIMER PRODUIT PANIER
     let deleteProduct = document.createElement("button");
     deleteProduct.id = cart[i]._id;
     div.appendChild(deleteProduct);
-    deleteProduct.textContent = "Supprimer le produit";
+    deleteProduct.textContent = "X";
 
     // AU CLICK SUPPRIMER LE PRODUIT LOCALSTORAGE + SUPPRIMER LA DIV DU PRODUIT
     deleteProduct.addEventListener('click', function deleteProd(){
@@ -114,33 +104,142 @@ for (let i=0; i < cart.length; i++){
     })
 }
 
-// AFFICHAGE DU PRIX TOTAL DE LA COMMANDE
-let totalOrderPrice = document.createElement("p");
-totalOrderPrice.id = "totalOrderPrice";
-divFinalOrderPrice.appendChild(totalOrderPrice);
-totalOrderPrice.textContent = "PRIX TOTAL DE LA COMMANDE : " + parsed + "€";
-addPrice(parsed);
+// VALIDATION FORMULAIRE DE COMMANDE 
+let form = document.querySelector('#orderForm');
 
+// VALIDATION FIRST NAME
+form.firstName.addEventListener('change', function() {
+    validFirstName(this)
+});
 
-//VALIDATION FORMULAIRE COMMANDE
-// document.getElementById("orderForm").addEventListener("submit", function(e){
-//     let error;
-//     let inputs = document.getElementById("orderForm").getElementsByTagName("input");
+const validFirstName = function(inputFirstName){
+    // création de la Reg Exp pour la validation du nom
+    let firstNameRegExp = new RegExp ('^[a-zA-Z- ]+$');
 
-//     for (let i = 0; i < inputs.length; i++){
-//         if (!inputs[i].value){
-//             erreur = "Veuillez renseigner tous les champs";
-//         }
-//     }
+    // RECUPERATION DE LA BALISE SMALL
+    let small = inputFirstName.nextElementSibling;
 
-//      if(erreur){
-//         e.preventDefault();
-//         document.getElementById("erreur").innerHTML = erreur;
-//         return false;    
-//     }else{
-//         alert('formulaire envoyé');
-//     }
+    if(firstNameRegExp.test(inputFirstName.value)){
+        small.innerHTML = "Nom valide";
+        small.classList.remove('text-danger');
+        small.classList.add('text-success');
+        return true;
+    }else{
+        small.innerHTML = "Nom non valide";
+        small.classList.add('text-danger');
+        small.classList.remove('text-success');
+        return false;
+    }
+};
 
-// })
+// VALIDATION LAST NAME
+form.lastName.addEventListener('change', function() {
+    validLastName(this)
+});
 
-let test = cart[0].imageUrl;
+const validLastName = function(inputLastName){
+    // création de la Reg Exp pour la validation du prénom
+    let lastNameRegExp = new RegExp ('^[a-zA-Z- ]+$');
+
+    // RECUPERATION DE LA BALISE SMALL
+    let small = inputLastName.nextElementSibling;
+
+    if(lastNameRegExp.test(inputLastName.value)){
+        small.innerHTML = "Prénom valide";
+        small.classList.remove('text-danger');
+        small.classList.add('text-success');
+        return true;
+    }else{
+        small.innerHTML = "Prénom non valide";
+        small.classList.add('text-danger');
+        small.classList.remove('text-success');
+        return false;
+    }
+};
+
+// VALIDATION ADRESSE
+form.adress.addEventListener('change', function() {
+    validAdress(this)
+});
+
+const validAdress = function(inputAdress){
+    // création de la Reg Exp pour la validation de l'adresse
+    let adressRegExp = new RegExp ('^[A-Za-zÀ-ÖØ-öø-ÿ0-9- ]+$');
+
+    // RECUPERATION DE LA BALISE SMALL
+    let small = inputAdress.nextElementSibling;
+
+    if(adressRegExp.test(inputAdress.value)){
+        small.innerHTML = "Adresse valide";
+        small.classList.remove('text-danger');
+        small.classList.add('text-success');
+        return true;
+    }else{
+        small.innerHTML = "Adresse non valide";
+        small.classList.add('text-danger');
+        small.classList.remove('text-success');
+        return false;
+    }
+};
+
+// VALIDATION EMAIL
+form.email.addEventListener('change', function() {
+    validEmail(this)
+});
+
+const validEmail = function(inputEmail){
+    // création de la Reg Exp pour la validation de l'email
+    let emailRegExp = new RegExp ('^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g');
+
+    // RECUPERATION DE LA BALISE SMALL
+    let small = inputEmail.nextElementSibling;
+
+    if(emailRegExp.test(inputEmail.value)){
+        small.innerHTML = "Adresse mail valide";
+        small.classList.remove('text-danger');
+        small.classList.add('text-success');
+        return true;
+    }else{
+        small.innerHTML = "Adresse mail non valide";
+        small.classList.add('text-danger');
+        small.classList.remove('text-success');
+        return false;
+    }
+};
+
+// VALIDATION CODE POSTAL
+form.codePostal.addEventListener('change', function() {
+    validCodePostal(this)
+});
+
+const validCodePostal = function(inputCodePostal){
+    // création de la Reg Exp pour la validation du code postal
+    let codePostalRegExp = new RegExp ('^[0-9]+$');
+
+    // RECUPERATION DE LA BALISE SMALL
+    let small = inputCodePostal.nextElementSibling;
+
+    if(codePostalRegExp.test(inputCodePostal.value)){
+        small.innerHTML = "Code postal valide";
+        small.classList.remove('text-danger');
+        small.classList.add('text-success');
+        return true;
+    }else{
+        small.innerHTML = "Code postal non valide";
+        small.classList.add('text-danger');
+        small.classList.remove('text-success');
+        return false;
+    }
+};
+
+// ECOUTE DE LA SOUMISSION DU FORMULAIRE
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    if(validFirstName(form.lastName) && validLastName(form.lastName) && validAdress(form.adress) && validEmail(form.email) && validCodePostal(form.codePostal)){
+        
+        form.submit();
+    } 
+});
+
+// ENVOI A LA PAGE DE CONFIRMATION AU CLICK DU BOUTON COMMANDER
+// si il y a au moins 1 article dans le panier + formulaire ok
