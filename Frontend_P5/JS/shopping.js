@@ -67,24 +67,33 @@ for (let i=0; i < cart.length; i++){
     }
 
     let selected = document.getElementById(cart[i]._id);
-    selected.addEventListener('change', function quantity(){
+    selected.addEventListener('change', function quantity(event){
+        event.preventDefault()
        numberQty = this.value;
        let finalPrice = localStorage.getItem('finalPrice');
        total = JSON.parse(finalPrice);
 
-    
-            let price = numberQty * cart[i].price;
-            if (finalPrice === null){
-                total=[];
-            }
-            total.push(price);
-            console.log(price);
+        let price = numberQty * cart[i].price;
+        if (finalPrice === null){
+            total=[];
+        }
+        total.push(price);
+        console.log(price);
 
-            totalPrice.textContent = "Total du produit :" + " " + price + "€";
+        totalPrice.textContent = "Total du produit :" + " "+ price  + "€";
+           
+        localStorage.setItem("finalPrice", JSON.stringify(total));
+        let tot=0;
 
-        localStorage.setItem("finalPrice", JSON.stringify(total));   
+        for (let i=0; i < total.length; i++) {
+            tot = tot + total[i];
+            myTot()
+            
+            console.log(tot);
+                        
+        }
     })
-
+   
     // CREATION BOUTON SUPPRIMER PRODUIT PANIER
     let deleteProduct = document.createElement("button");
     deleteProduct.id = cart[i]._id;
@@ -103,6 +112,19 @@ for (let i=0; i < cart.length; i++){
         } 
     })
 }
+
+// AFFICHAGE DU PRIX TOTAL DE LA COMMANDE
+function myTot() {
+   
+    let finalPrice = localStorage.getItem('finalPrice');
+    tot = JSON.parse(finalPrice); 
+        
+    let priceP = document.createElement("p")
+    let priceDiv = document.getElementById("finalPriceOrder")
+    priceDiv.appendChild(priceP)
+    priceP.textContent = tot
+}
+
 
 // VALIDATION FORMULAIRE DE COMMANDE 
 let form = document.querySelector('#orderForm');

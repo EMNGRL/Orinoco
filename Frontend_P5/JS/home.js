@@ -38,3 +38,5 @@ function displayArticle(){
 
    document.getElementById("main").appendChild(cloneElt)
 }
+
+
