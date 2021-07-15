@@ -1,19 +1,17 @@
 let cartItems = localStorage.getItem('productsInCart');
 let cart = JSON.parse(cartItems);
-myTot()
 
 // AFFICHAGE DES PRODUITS AJOUTES AU PANIER
 for (let i=0; i < cart.length; i++){
 
     let div = document.createElement("div");
-    div.id = "divProductAdded";
-    div.setAttribute = ("id", cart[i]._id);
+    div.id = cart[i].name;
+    div.classList.add("divProductAdded");
     productAdded.appendChild(div);
-
 
     // CREATION DE L'AFFICHAGE DES ELEMENTS IMG DU PRODUIT
     let pImg= document.createElement("img");
-    pImg.id = "pImg";
+    pImg.classList.add("pImg");
     div.appendChild(pImg);
     pImg.src = cart[i].imageUrl;
 
@@ -22,7 +20,7 @@ for (let i=0; i < cart.length; i++){
     let pName = document.createElement("p");
     document.getElementById("productAdded");
     document.getElementById("shopProduct");
-    pName.id = "pName";
+    pName.classList.add ("pName");
     shopProduct.appendChild(productAdded);
     div.appendChild(pName);
     pName.innerHTML = cart[i].name;
@@ -31,7 +29,7 @@ for (let i=0; i < cart.length; i++){
     let pLenses = document.createElement("p");
     document.getElementById("productAdded");
     document.getElementById("shopProduct");
-    pLenses.id = "pLenses";
+    pLenses.classList.add("pLenses");
     shopProduct.appendChild(productAdded);
     div.appendChild(pLenses);
     pLenses.innerHTML = "Lentille sélectionnée : " + " " + cart[i].lenses;
@@ -40,7 +38,7 @@ for (let i=0; i < cart.length; i++){
     let pPrice = document.createElement("p");
     document.getElementById("productAdded");
     document.getElementById("shopProduct");
-    pPrice.id = "pPrice";
+    pPrice.classList.add ("pPrice");
     shopProduct.appendChild(productAdded);
     div.appendChild(pPrice);
     pPrice.innerHTML = "Prix unitaire :" + " " + cart[i].price + "€";
@@ -57,7 +55,7 @@ for (let i=0; i < cart.length; i++){
 
     // CREATION DE L'AFFICHAGE DU PRIX TOTAL DES PRODUITS
     let totalPrice = document.createElement("p");
-    totalPrice.id = "totalPriceProduct";
+    totalPrice.classList.add ("totalPriceProduct");
     div.appendChild(totalPrice);
 
     for (let j = 0; j < 11; j++){
@@ -66,34 +64,32 @@ for (let i=0; i < cart.length; i++){
         select.appendChild(lenses);
         lenses.textContent = j;
     }
-
+   
     let selected = document.getElementById(cart[i]._id);
     selected.addEventListener('change', function quantity(){
         
-       numberQty = this.value;
-       let finalPrice = localStorage.getItem('finalPrice');
-       total = JSON.parse(finalPrice);
+    numberQty = this.value;
+    let finalPrice = localStorage.getItem('finalPrice');
+    total = JSON.parse(finalPrice);
 
-    
-        let price = numberQty * cart[i].price;
-        if (finalPrice === null){
-            total=[];
-        }
-        total.push(price);
-        console.log(price);
-
-        totalPrice.textContent = "Total du produit :" + " "+ price  + "€";
-
-        localStorage.setItem("finalPrice", JSON.stringify(total));
-        let tot=0;
-        for (let i=0; i < total.length; i++) {
-            price = []
-            tot = tot + total[i];
-            parsed = parseInt(tot);
-            price.push(parsed)
-            console.log(tot);
-            localStorage.setItem("prices", JSON.stringify(price))       
-        }
+    let price = numberQty * cart[i].price;
+    if (finalPrice === null){
+        total=[];
+    }
+    total.push(price);
+    console.log(price);
+    totalPrice.textContent = "Total du produit :" + " "+ price  + "€";
+    localStorage.setItem("finalPrice", JSON.stringify(total));
+        
+    let tot=0;
+    for (let i=0; i < total.length; i++) {
+        price = []
+        tot = tot + total[i];
+        parsed = parseInt(tot);
+        price.push(parsed)
+        console.log(tot);
+        localStorage.setItem("prices", JSON.stringify(price))   
+    }       
     })
    
     // CREATION BOUTON SUPPRIMER PRODUIT PANIER
@@ -104,35 +100,36 @@ for (let i=0; i < cart.length; i++){
 
     // AU CLICK SUPPRIMER LE PRODUIT LOCALSTORAGE + SUPPRIMER LA DIV DU PRODUIT
     deleteProduct.addEventListener('click', function deleteProd(){
-        if (cart[i]._id){
+        if (cart[i]._id || total[i].price){
             delete cart[i] 
             localStorage.setItem("productsInCart", JSON.stringify(cart));
+            delete total[i]
+            localStorage.setItem("finalPrice", JSON.stringify(total));
+            alert("Votre article a bien été supprimé")
             console.log(i);
             div.style.display="none";
-        }else{
-            alert("alert")
-        } 
+            
+        }
     })
 }
 
-// AFFICHAGE DU PRIX TOTAL DE LA COMMANDE
+// AFFICHAGE PRIX TOTAL DE LA COMMANDE + BOUTON RECALCULER LA COMMANDE
+let priceP = document.createElement("p")
+let priceDiv = document.getElementById("divFinalOrderPrice")
+priceDiv.appendChild(priceP)
 let btn = document.createElement("button")
-btn.textContent = "Recalculer mon panier"
-finalPriceOrder.appendChild(btn)
+btn.textContent = "Recalculer le montant de la commande"
+divFinalOrderPrice.appendChild(btn)
+
+// AU CLICK CALCUL DU MONTANT DE LA COMMANDE
 btn.addEventListener('click', function refresh(){
-    myTot()
-})
+    tot = JSON.parse( localStorage.getItem("prices"))
+    priceP.innerHTML = "Montant de la commande : " + tot + "€"
+        
+})   
+priceP.textContent = "Montant de la commande : "
 
-function myTot(tot){ 
-    let priceP = document.createElement("p")
-    let priceDiv = document.getElementById("finalPriceOrder")
-    priceDiv.appendChild(priceP)
-    tot = JSON.parse(localStorage.getItem("prices"))
-    console.log(tot);
-    priceP.textContent = "Montant de la commande : " + tot + "€"
-    return tot
-}
-
+// FORMULAIRE
 // VALIDATION FORMULAIRE DE COMMANDE 
 let form = document.querySelector('#orderForm');
 

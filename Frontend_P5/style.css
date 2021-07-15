@@ -198,31 +198,31 @@ h1{
     border: black solid 2px;
 }
 
-#divProductAdded{
+.divProductAdded{
     display: flex;
     align-items: center;
     margin-bottom: 2%;
 }
 
-#pImg{
+.pImg{
     margin-right: 2%;
     width: 20%;
     border-radius: 25px;
 }
 
-#pName{
+.pName{
     margin-right: 2%;
     font-size: 19px;
     font-weight: 700; 
 }
 
-#pLenses{
+.pLenses{
     margin-right: 2%;
     font-size: 15px;
     font-weight: 500;
 }
 
-#pPrice{
+.pPrice{
     margin-right: 2%;
     font-size: 15px;
     font-weight: 500;
@@ -233,12 +233,12 @@ h1{
     margin-right: 1%;
 }
 
-#totalPriceProduct{
+.totalPriceProduct{
     font-size: 15px;
     margin-left: 2%;
 }
 
-#divProductAdded button{
+.divProductAdded button{
     background-color: rgb(226, 38, 38);
     color: white;
     border-style: none;
@@ -247,18 +247,18 @@ h1{
     width: 30px;
 }
 
-#finalPriceOrder{
+#divFinalOrderPrice {
     text-align: center;
     margin: 2% 0 2% 0;
 }
 
-#finalPriceOrder p{
+#divFinalOrderPrice p{
     font-size: 20px;
     font-weight: 600;
 }
 
-#finalPriceOrder button{
-    width: 13%;
+#divFinalOrderPrice button{
+    width: 20%;
     padding: 0.5%;
     border-style: none;
     background: #f3e9f1;
@@ -499,16 +499,25 @@ h1{
         margin: 0 3% 0 3%;
     }
 
-    #divProductAdded{
+    .divProductAdded{
         display: block;
         margin-bottom: 4%;
         text-align: center;
     }
     
-    #pImg{
+    .pImg{
         margin-right: 0;
         width: 40%;
         border-radius: 11px;
+    }
+
+    #divFinalOrderPrice{
+        margin: 2% 0 8% 0;
+    }
+
+    #divFinalOrderPrice button{
+        width: 75%;
+        padding: 2.5%;
     }
 
     #form{
