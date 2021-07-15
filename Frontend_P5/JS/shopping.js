@@ -1,5 +1,6 @@
 let cartItems = localStorage.getItem('productsInCart');
 let cart = JSON.parse(cartItems);
+myTot()
 
 // AFFICHAGE DES PRODUITS AJOUTES AU PANIER
 for (let i=0; i < cart.length; i++){
@@ -67,12 +68,13 @@ for (let i=0; i < cart.length; i++){
     }
 
     let selected = document.getElementById(cart[i]._id);
-    selected.addEventListener('change', function quantity(event){
-        event.preventDefault()
+    selected.addEventListener('change', function quantity(){
+        
        numberQty = this.value;
        let finalPrice = localStorage.getItem('finalPrice');
        total = JSON.parse(finalPrice);
 
+    
         let price = numberQty * cart[i].price;
         if (finalPrice === null){
             total=[];
@@ -81,16 +83,16 @@ for (let i=0; i < cart.length; i++){
         console.log(price);
 
         totalPrice.textContent = "Total du produit :" + " "+ price  + "€";
-           
+
         localStorage.setItem("finalPrice", JSON.stringify(total));
         let tot=0;
-
         for (let i=0; i < total.length; i++) {
+            price = []
             tot = tot + total[i];
-            myTot()
-            
+            parsed = parseInt(tot);
+            price.push(parsed)
             console.log(tot);
-                        
+            localStorage.setItem("prices", JSON.stringify(price))       
         }
     })
    
@@ -114,17 +116,22 @@ for (let i=0; i < cart.length; i++){
 }
 
 // AFFICHAGE DU PRIX TOTAL DE LA COMMANDE
-function myTot() {
-   
-    let finalPrice = localStorage.getItem('finalPrice');
-    tot = JSON.parse(finalPrice); 
-        
+let btn = document.createElement("button")
+btn.textContent = "Recalculer mon panier"
+finalPriceOrder.appendChild(btn)
+btn.addEventListener('click', function refresh(){
+    myTot()
+})
+
+function myTot(tot){ 
     let priceP = document.createElement("p")
     let priceDiv = document.getElementById("finalPriceOrder")
     priceDiv.appendChild(priceP)
-    priceP.textContent = tot
+    tot = JSON.parse(localStorage.getItem("prices"))
+    console.log(tot);
+    priceP.textContent = "Montant de la commande : " + tot + "€"
+    return tot
 }
-
 
 // VALIDATION FORMULAIRE DE COMMANDE 
 let form = document.querySelector('#orderForm');
