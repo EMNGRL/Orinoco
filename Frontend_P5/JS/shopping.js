@@ -208,6 +208,31 @@ const validAdress = function(inputAdress){
     }
 };
 
+// VALIDATION CITY
+form.city.addEventListener('change', function() {
+    validCity(this)
+});
+
+const validCity = function(inputCity){
+    // création de la Reg Exp pour la validation de l'email
+    let cityRegExp = new RegExp ('^[A-Za-zÀ-ÖØ-öø-ÿ0-9- ]+$');
+
+    // RECUPERATION DE LA BALISE SMALL
+    let small = inputCity.nextElementSibling;
+
+    if(cityRegExp.test(inputCity.value)){
+        small.innerHTML = "Ville mail valide";
+        small.classList.remove('text-danger');
+        small.classList.add('text-success');
+        return true;
+    }else{
+        small.innerHTML = "Ville non valide";
+        small.classList.add('text-danger');
+        small.classList.remove('text-success');
+        return false;
+    }
+};
+
 // VALIDATION EMAIL
 form.email.addEventListener('change', function() {
     validEmail(this)
@@ -259,13 +284,52 @@ const validCodePostal = function(inputCodePostal){
 };
 
 // ECOUTE DE LA SOUMISSION DU FORMULAIRE
-form.addEventListener('submit', function(e) {
+form.addEventListener('click', async function(e) {
     e.preventDefault();
     if(validFirstName(form.lastName) && validLastName(form.lastName) && validAdress(form.adress) && validEmail(form.email) && validCodePostal(form.codePostal)){
         
-        form.submit();
+    console.log("ok")
     } 
-});
 
-// ENVOI A LA PAGE DE CONFIRMATION AU CLICK DU BOUTON COMMANDER
-// si il y a au moins 1 article dans le panier + formulaire ok
+    // objet contact
+    let contact = {
+        firstName: form.firstName.value,
+        lastName: form.lastName.value,
+        address: form.adress.value,
+        city: form.city.value,
+        email: form.email.value,
+    }
+    console.log(contact);
+
+    localStorage.setItem("contact", JSON.stringify(contact))
+
+    // tableau des produits
+    let products = [];
+    for (let i = 0; i < cart.length; i++) {
+        products.push(cart[i]._id);
+        localStorage.setItem("id", JSON.stringify(products));
+    }
+    console.log(products);
+
+    let send = JSON.stringify({"contact": contact,
+                           "products": products});
+
+    console.log(send);
+    let response = await fetch("http://localhost:3000/api/cameras/order", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json"
+              },
+      body:  send,
+    });
+
+    // redirection vers page de confirmation
+    if (response.ok) {
+    
+    window.location.href = "orderthanks.html";
+    console.log(response);
+    } else {
+          console.log ("err");
+    }
+    
+});

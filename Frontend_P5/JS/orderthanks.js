@@ -18,7 +18,7 @@ for (let i=0; i < total.length; i++) {
     let wholeP = localStorage.getItem("totalPrice")
     big = JSON.parse(wholeP);
     console.log(big);
-    price.innerHTML = "Prix total de votre commande : " + parsed + "€"
+    price.innerHTML = "Montant de votre commande : " + parsed + "€"
 }
 
 // RECAPITULATIF DE LA COMMANDE
@@ -42,7 +42,7 @@ for (let i=0; i < cart.length; i++){
     let pName = document.createElement("p");
     document.getElementById("productOrder");
     document.getElementById("recapOrder");
-    pName.id = "pName";
+    pName.classList.add ("pName");
     recapOrder.appendChild(productOrder);
     div.appendChild(pName);
     pName.innerHTML = "Appareil choisi : " + cart[i].name;
@@ -51,10 +51,21 @@ for (let i=0; i < cart.length; i++){
     let pLenses = document.createElement("p");
     document.getElementById("productOrder");
     document.getElementById("recapOrder");
-    pLenses.id = "pLenses";
+    pLenses.classList.add("pLenses");
     recapOrder.appendChild(productOrder);
     div.appendChild(pLenses);
     pLenses.innerHTML = "Lentille sélectionnée : " + " " + cart[i].lenses;
 }
 
 // NUMERO DE COMMANDE
+
+let divOrderId = document.createElement("div");
+let orderId = document.createElement("p");
+divOrderId.appendChild(orderId);
+document.getElementById("order");
+order.appendChild(divOrderId);
+
+let id = localStorage.getItem('id');
+let ids = JSON.parse(id);
+
+orderId.textContent = ids;
