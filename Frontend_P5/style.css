@@ -265,6 +265,12 @@ h1{
     border-radius: 10px;
 }
 
+#divFinalOrderPrice button:hover{
+    background: #8f5bfe;
+    color: white;
+    transition: 0.5s;
+}
+
 #form h2{
     text-align: center;
 }
@@ -357,7 +363,7 @@ h1{
     font-weight: 700;
 }
 
-.return{
+#return{
     background: #f3e9f1;
     border-style: none;
     padding: 1%;
@@ -367,7 +373,7 @@ h1{
     margin-left: 33%;
 }
 
-.return:hover{
+#return:hover{
     background: #8f5bfe;
     color: white;
     transition: 0.5s;

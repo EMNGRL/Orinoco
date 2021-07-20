@@ -1,21 +1,23 @@
+// RÉCUPÉRATION DES DONNÉES PRODUITS AJOUTÉS DU LOCAL STORAGE 
 let cartItems = localStorage.getItem('productsInCart');
 let cart = JSON.parse(cartItems);
 
-// AFFICHAGE DES PRODUITS AJOUTES AU PANIER
+// AFFICHAGE DES PRODUITS AJOUTÉS AU PANIER
 for (let i=0; i < cart.length; i++){
 
+    // CRÉATION DE LA DIV PRINCIPAL DU PRODUIT AJOUTÉ
     let div = document.createElement("div");
     div.id = cart[i].name;
     div.classList.add("divProductAdded");
     productAdded.appendChild(div);
 
-    // CREATION DE L'AFFICHAGE DES ELEMENTS IMG DU PRODUIT
+    // CRÉATION DE L'AFFICHAGE DES ÉLÉMENTS IMG DU PRODUIT
     let pImg= document.createElement("img");
     pImg.classList.add("pImg");
     div.appendChild(pImg);
     pImg.src = cart[i].imageUrl;
 
-    // CREATION DE L'AFFICHAGE DES ELEMENTS TEXTE DU PRODUIT
+    // CRÉATION DE L'AFFICHAGE DES ÉLÉMENTS TEXTE DU PRODUIT
     // NOM DU PRODUIT
     let pName = document.createElement("p");
     document.getElementById("productAdded");
@@ -25,7 +27,7 @@ for (let i=0; i < cart.length; i++){
     div.appendChild(pName);
     pName.innerHTML = cart[i].name;
 
-    // LENTILLE SELECTIONNEE
+    // LENTILLE SELECTIONNÉE
     let pLenses = document.createElement("p");
     document.getElementById("productAdded");
     document.getElementById("shopProduct");
@@ -43,7 +45,7 @@ for (let i=0; i < cart.length; i++){
     div.appendChild(pPrice);
     pPrice.innerHTML = "Prix unitaire :" + " " + cart[i].price + "€";
 
-    // CREATION DE L'AFFICHAGE DU CHOIX DES QTE DU PRODUIT
+    // CRÉATION DE L'AFFICHAGE DU CHOIX DES QTÉS DU PRODUIT
     let select = document.createElement("select");
     select.id = cart[i]._id;
     document.getElementById("quantity");
@@ -53,7 +55,7 @@ for (let i=0; i < cart.length; i++){
     div.appendChild(qty);
     div.appendChild(select);
 
-    // CREATION DE L'AFFICHAGE DU PRIX TOTAL DES PRODUITS
+    // CRÉATION DE L'AFFICHAGE DU PRIX TOTAL DES PRODUITS
     let totalPrice = document.createElement("p");
     totalPrice.classList.add ("totalPriceProduct");
     div.appendChild(totalPrice);
@@ -92,7 +94,7 @@ for (let i=0; i < cart.length; i++){
     }       
     })
    
-    // CREATION BOUTON SUPPRIMER PRODUIT PANIER
+    // CRÉATION BOUTON SUPPRIMER PRODUIT PANIER
     let deleteProduct = document.createElement("button");
     deleteProduct.id = cart[i]._id;
     div.appendChild(deleteProduct);
@@ -142,7 +144,7 @@ const validFirstName = function(inputFirstName){
     // création de la Reg Exp pour la validation du nom
     let firstNameRegExp = new RegExp ('^[a-zA-Z- ]+$');
 
-    // RECUPERATION DE LA BALISE SMALL
+    // RÉCUPÉRATION DE LA BALISE SMALL
     let small = inputFirstName.nextElementSibling;
 
     if(firstNameRegExp.test(inputFirstName.value)){
@@ -167,7 +169,7 @@ const validLastName = function(inputLastName){
     // création de la Reg Exp pour la validation du prénom
     let lastNameRegExp = new RegExp ('^[a-zA-Z- ]+$');
 
-    // RECUPERATION DE LA BALISE SMALL
+     // RÉCUPÉRATION DE LA BALISE SMALL
     let small = inputLastName.nextElementSibling;
 
     if(lastNameRegExp.test(inputLastName.value)){
@@ -192,7 +194,7 @@ const validAdress = function(inputAdress){
     // création de la Reg Exp pour la validation de l'adresse
     let adressRegExp = new RegExp ('^[A-Za-zÀ-ÖØ-öø-ÿ0-9- ]+$');
 
-    // RECUPERATION DE LA BALISE SMALL
+    // RÉCUPÉRATION DE LA BALISE SMALL
     let small = inputAdress.nextElementSibling;
 
     if(adressRegExp.test(inputAdress.value)){
@@ -217,7 +219,7 @@ const validCity = function(inputCity){
     // création de la Reg Exp pour la validation de l'email
     let cityRegExp = new RegExp ('^[A-Za-zÀ-ÖØ-öø-ÿ0-9- ]+$');
 
-    // RECUPERATION DE LA BALISE SMALL
+     // RÉCUPÉRATION DE LA BALISE SMALL
     let small = inputCity.nextElementSibling;
 
     if(cityRegExp.test(inputCity.value)){
@@ -242,7 +244,7 @@ const validEmail = function(inputEmail){
     // création de la Reg Exp pour la validation de l'email
     let emailRegExp = new RegExp ('^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g');
 
-    // RECUPERATION DE LA BALISE SMALL
+     // RÉCUPÉRATION DE LA BALISE SMALL
     let small = inputEmail.nextElementSibling;
 
     if(emailRegExp.test(inputEmail.value)){
@@ -267,7 +269,7 @@ const validCodePostal = function(inputCodePostal){
     // création de la Reg Exp pour la validation du code postal
     let codePostalRegExp = new RegExp ('^[0-9]+$');
 
-    // RECUPERATION DE LA BALISE SMALL
+     // RÉCUPÉRATION DE LA BALISE SMALL
     let small = inputCodePostal.nextElementSibling;
 
     if(codePostalRegExp.test(inputCodePostal.value)){
@@ -283,11 +285,10 @@ const validCodePostal = function(inputCodePostal){
     }
 };
 
-// ECOUTE DE LA SOUMISSION DU FORMULAIRE
+// ÉCOUTE DE LA SOUMISSION DU FORMULAIRE
 form.addEventListener('click', async function(e) {
     e.preventDefault();
-    if(validFirstName(form.lastName) && validLastName(form.lastName) && validAdress(form.adress) && validEmail(form.email) && validCodePostal(form.codePostal)){
-        
+    if(validFirstName(form.lastName) && validLastName(form.lastName) && validAdress(form.adress) && validEmail(form.email) && validCodePostal(form.codePostal)){ 
     console.log("ok")
     } 
 
@@ -331,5 +332,4 @@ form.addEventListener('click', async function(e) {
     } else {
           console.log ("err");
     }
-    
 });

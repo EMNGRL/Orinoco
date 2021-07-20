@@ -1,4 +1,4 @@
-// RECUPERATION DU PRIX TOTAL SUR LA PAGE SHOPPING
+// RÉCUPÉRATION DU PRIX TOTAL SUR LA PAGE SHOPPING
 let finalPrice = localStorage.getItem('finalPrice');
 total = JSON.parse(finalPrice);
 
@@ -21,18 +21,18 @@ for (let i=0; i < total.length; i++) {
     price.innerHTML = "Montant de votre commande : " + parsed + "€"
 }
 
-// RECAPITULATIF DE LA COMMANDE
+// RÉCAPITULATIF DE LA COMMANDE
 let cartItems = localStorage.getItem('productsInCart');
 let cart = JSON.parse(cartItems);
 
-// CREATION H2 RECAP COMMANDE
+// CRÉATION H2 RÉCAP COMMANDE
 let orderH = document.createElement("H2");
 recapOrder.appendChild(orderH);
 orderH.innerHTML = "Récapitulatif de votre commande : ";
 
 for (let i=0; i < cart.length; i++){
 
-    // DIV DE CHAQUE PRODUIT ACHETE
+    // DIV DE CHAQUE PRODUIT ACHETÉ
     let div = document.createElement("div");
     div.id = "divProductOrder";
     div.setAttribute = ("id", cart[i]._id);
@@ -47,7 +47,7 @@ for (let i=0; i < cart.length; i++){
     div.appendChild(pName);
     pName.innerHTML = "Appareil choisi : " + cart[i].name;
 
-    // LENTILLE SELECTIONNEE
+    // LENTILLE SELECTIONNÉE
     let pLenses = document.createElement("p");
     document.getElementById("productOrder");
     document.getElementById("recapOrder");
@@ -57,15 +57,21 @@ for (let i=0; i < cart.length; i++){
     pLenses.innerHTML = "Lentille sélectionnée : " + " " + cart[i].lenses;
 }
 
-// NUMERO DE COMMANDE
+// NUMÉRO DE COMMANDE
 
-let divOrderId = document.createElement("div");
-let orderId = document.createElement("p");
-divOrderId.appendChild(orderId);
-document.getElementById("order");
-order.appendChild(divOrderId);
+let orderP = document.createElement("p");
+orderNumber.appendChild(orderP);
+document.getElementById("mainOrder");
 
-let id = localStorage.getItem('id');
-let ids = JSON.parse(id);
+let min = 1;
+let max = 100000000;
+let random = Math.floor(Math.random() * (max - min)) + min;
+orderP.textContent = " Numéro de commande : " + random ;
 
-orderId.textContent = ids;
+// CLEAR LOCAL STORAGE RETOUR ACCUEIL
+
+let btn = document.getElementById("return");
+btn.addEventListener('click', function clearLocalStorage(){
+    window.localStorage.clear();
+    window.location.href = "/home.html";
+})

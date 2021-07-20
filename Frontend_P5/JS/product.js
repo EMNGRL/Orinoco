@@ -1,4 +1,4 @@
-// RECUPERATION DE L'URL AVEC ID
+// RÉCUPÉRATION DE L'URL AVEC ID
 const params = new URLSearchParams(window.location.search);
 let idCamera = params.get("id");
 
@@ -27,7 +27,7 @@ const getOneCamera = async function () {
 // APPEL DE LA FONCTION API
 getOneCamera()
 
-// CREATION & AFFICHAGE DES DONNEES DU PRODUIT
+// CRÉATION & AFFICHAGE DES DONNÉES DU PRODUIT
 function createCamera(myCamera){
 let product = document.getElementById("infoProduct")
     
@@ -103,7 +103,7 @@ function cartNumbers(prod){
     setItems(prod);
 }
 
-// STOCKAGE DANS LE LOCAL STORAGE DES DONNEES DU PRODUIT
+// STOCKAGE DANS LE LOCAL STORAGE DES DONNÉES DU PRODUIT
 function setItems(){ 
     let cartItems = localStorage.getItem('productsInCart');
     cart = JSON.parse(cartItems);
