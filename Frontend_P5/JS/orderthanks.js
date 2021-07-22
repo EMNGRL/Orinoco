@@ -58,7 +58,6 @@ for (let i=0; i < cart.length; i++){
 }
 
 // NUMÉRO DE COMMANDE
-
 let orderP = document.createElement("p");
 orderNumber.appendChild(orderP);
 document.getElementById("mainOrder");
@@ -69,7 +68,6 @@ let random = Math.floor(Math.random() * (max - min)) + min;
 orderP.textContent = " Numéro de commande : " + random ;
 
 // CLEAR LOCAL STORAGE RETOUR ACCUEIL
-
 let btn = document.getElementById("return");
 btn.addEventListener('click', function clearLocalStorage(){
     window.localStorage.clear();
