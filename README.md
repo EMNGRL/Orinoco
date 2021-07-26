@@ -1,6 +1,6 @@
-Prerequisites :
+Prérequis :
 
-You will need to have Node and npm installed locally on your machine.
+Vous avez besoin d'avoir Node et npm d'installé sur votre machine.
 
 
 Installation :
